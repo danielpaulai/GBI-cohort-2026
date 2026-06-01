@@ -100,6 +100,9 @@ COHORT_SKILLS=(
     "ikigai-discovery-journey"
     "voice-profile-builder"
     "business-brain-builder"
+    "brand-foundation-builder"
+    "icp-precision-builder"
+    "30-day-challenge-builder"
 )
 
 INSTALL_COUNT=0

@@ -25,7 +25,27 @@ Versions follow [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] · v1.1 · Quick Wins (target: this week)
+## [1.1.0] · 2026-05-17 · The Expansion
+
+### Added
+- **3 NEW cohort skills:**
+  - `brand-foundation-builder` · 6-question brand foundation · BRAND.md output
+  - `icp-precision-builder` · 7-question ICP precision tuning · ICP.md output
+  - `30-day-challenge-builder` · 8-question public Challenge launch builder · 30-DAY-CHALLENGE.md output
+- **Cohort welcome page** · `welcome/index.html` · Vercel-ready landing page with countdown
+- **WhatsApp templates** · `whatsapp-templates/COHORT-MESSAGES.md` · 50+ message templates for team
+- **install.sh updated** to install all 6 cohort skills (was 3)
+
+### Coverage map
+Each skill maps to a cohort day:
+- Day 1 (Jul 21) · `ikigai-discovery-journey`
+- Day 2 (Jul 22) · `voice-profile-builder` + `business-brain-builder`
+- Day 4 (Jul 24) · `brand-foundation-builder` + `icp-precision-builder`
+- Day 18 (Aug 7) · `30-day-challenge-builder`
+
+---
+
+## [Unreleased] · v1.2 · Quality Improvements (target: 1 week before July 21)
 
 ### Planned
 - Progress indicators ("Question 3 of 16 · 18% done")
@@ -33,6 +53,10 @@ Versions follow [Semantic Versioning](https://semver.org/).
 - Cross-skill referencing (Voice + Business Brain auto-pull from Ikigai)
 - Example answers for stuck users (anonymized inspiration)
 - Strength Score (1-10 across 5 dimensions · weakest area highlighted)
+- State persistence (auto-save · resume anytime)
+- Live diagram preview
+- Instagram card output (1080×1080 social share)
+- Auto-pin to all 5 Claude Projects
 
 ---
 

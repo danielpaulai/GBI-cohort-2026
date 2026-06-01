@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10X With AI · GBI Amsterdam Cohort · July 21 → August 8, 2026</title>
+<meta name="description" content="Build 5 AI Employees in 21 days. Never quits · never forgets · never leaves. Starting July 21, 2026.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="10X With AI · GBI Amsterdam Cohort">
+<meta property="og:description" content="Build 5 AI Employees in 21 days. Yours forever.">
+<meta property="og:type" content="website">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --bg-dark: #0E0E10;
+    --text: #0E0E10;
+    --accent: #E90D41;
+    --muted: #6B6B6E;
+    --card: #FFFFFF;
+    --border: #D8D8D5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  .font-serif { font-family: 'Fraunces', serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Hero · Aurora */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    background: var(--bg-dark);
+    color: white;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(233, 13, 65, 0.45), transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 60%, rgba(233, 13, 65, 0.25), transparent 60%),
+      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(92, 127, 140, 0.15), transparent 60%);
+    animation: aurora 18s ease infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  @keyframes aurora {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-4%, 4%); }
+    66% { transform: translate(4%, -4%); }
+  }
+
+  .hero-inner { position: relative; z-index: 2; padding: 24px; text-align: center; max-width: 1200px; }
+  .badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 11vw, 140px);
+    font-weight: 900;
+    letter-spacing: -3.5px;
+    line-height: 0.92;
+  }
+  .hero-italic { font-style: italic; color: var(--accent); font-weight: 300; }
+  .hero-sub {
+    margin-top: 32px;
+    font-size: clamp(18px, 2.2vw, 26px);
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Countdown */
+  .countdown {
+    margin-top: 48px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .countdown-unit {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 24px;
+    min-width: 110px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .countdown-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  /* Sections */
+  .section { padding: 96px 24px; max-width: 1200px; margin: 0 auto; }
+  .section-label { display: block; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 60px); font-weight: 800; text-align: center; margin: 0 auto 64px; max-width: 900px; line-height: 1.05; letter-spacing: -1.5px; }
+
+  /* Cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .card {
+    background: var(--card);
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .card-number { color: var(--accent); font-family: 'Fraunces', serif; font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -2px; margin-bottom: 16px; }
+  .card-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; margin: 8px 0 12px; line-height: 1.2; }
+  .card-body { color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+  /* Schedule table */
+  .schedule {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 140px;
+    gap: 24px;
+    padding: 20px 28px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .schedule-row:last-child { border-bottom: 0; }
+  .schedule-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .schedule-title { font-weight: 600; }
+  .schedule-time { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); text-align: right; }
+  @media (max-width: 720px) {
+    .schedule-row { grid-template-columns: 1fr; gap: 8px; }
+    .schedule-time { text-align: left; }
+  }
+
+  /* Install box */
+  .install-box {
+    background: var(--bg-dark);
+    color: white;
+    padding: 48px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 6px solid var(--accent);
+  }
+  .install-command {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: left;
+    user-select: all;
+  }
+  .install-command::before {
+    content: '$ ';
+    color: var(--accent);
+    user-select: none;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 36px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 0;
+  }
+  .button:hover { background: #c00b35; transform: translateY(-2px); }
+  .button.copy { background: white; color: var(--bg-dark); border: 2px solid var(--bg-dark); }
+  .button.copy:hover { background: var(--bg-dark); color: white; }
+
+  /* Pricing */
+  .pricing-card {
+    background: var(--card);
+    padding: 56px 40px;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.06);
+  }
+  .price-amount {
+    font-family: 'Fraunces', serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+  .price-period { font-size: 16px; color: var(--muted); margin-top: 8px; }
+
+  /* Footer */
+  .footer {
+    background: var(--bg-dark);
+    color: white;
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .footer .brand { color: var(--accent); font-weight: 800; letter-spacing: 3px; }
+
+  /* Fade-in */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* Mantra band */
+  .mantra-band {
+    background: var(--accent);
+    color: white;
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .mantra-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge">GBI AMSTERDAM · COHORT 1 · JULY 2026</div>
+    <h1 class="hero-title">10X With <span class="hero-italic">AI</span></h1>
+    <p class="hero-sub">
+      Build 5 AI Employees in 21 days.
+      <br>Never quits · never forgets · never leaves.
+    </p>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-number" id="days">--</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="hours">--</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="minutes">--</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-number" id="seconds">--</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase;">
+      Cohort begins · July 21 · 12pm CEST
+    </p>
+  </div>
+</section>
+
+<!-- MANTRA BAND -->
+<section class="mantra-band">
+  <p class="mantra-text">
+    "AI doesn't replace humans.<br>
+    It replaces the work humans shouldn't be doing."
+  </p>
+</section>
+
+<!-- WHAT YOU BUILD -->
+<section class="section">
+  <span class="section-label fade-up">In 21 Days · You Build</span>
+  <h2 class="section-title fade-up">5 AI Employees · running your business</h2>
+
+  <div class="grid-3 fade-up">
+    <div class="card">
+      <div class="card-number">01</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Marketing Executive</div>
+      <h3 class="card-title">Content in your voice</h3>
+      <p class="card-body">Voice DNA extraction · content audit · 14-day plan · ready-to-publish carousels in YOUR voice. Runs every Sunday night.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">02</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Sales Executive</div>
+      <h3 class="card-title">Personalized outreach at scale</h3>
+      <p class="card-body">30 ICP-matched prospects · 30 personalized DMs (zero templates) · pushed to your LinkedIn or Gmail. Every Monday morning.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">03</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Operations Executive</div>
+      <h3 class="card-title">Inbox + calendar + SOPs</h3>
+      <p class="card-body">Auto-triages your inbox · drafts replies · books meetings · generates SOPs from your workflows. Daily.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">04</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Finance Executive</div>
+      <h3 class="card-title">Cashflow + forecasts on autopilot</h3>
+      <p class="card-body">Pulls Stripe · runs weekly cashflow brief · auto-generates monthly P&L · flags anomalies before you do.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">05</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">CEO Brain</div>
+      <h3 class="card-title">Monday morning briefing</h3>
+      <p class="card-body">Aggregates from all 4 Executives · delivers your strategic brief at 7am every Monday · top 3 priorities · cross-engine patterns.</p>
+    </div>
+
+    <div class="card" style="background: var(--bg-dark); color: white; border-color: var(--accent);">
+      <div class="card-number" style="color: var(--accent);">∞</div>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 4px;">Deployment Promise</div>
+      <h3 class="card-title" style="color: white;">Until it's running</h3>
+      <p class="card-body" style="color: rgba(255,255,255,0.8);">Show up to all 20 hours · you walk out with at LEAST one AI Employee running. We work until it's deployed. Period.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section">
+  <span class="section-label fade-up">The 21-Day Schedule</span>
+  <h2 class="section-title fade-up">Every session · every milestone</h2>
+
+  <div class="schedule fade-up">
+    <div class="schedule-row">
+      <div class="schedule-date">Mon · 21 Jul</div>
+      <div class="schedule-title">Pre-Bootcamp · WHY + Ikigai Foundation</div>
+      <div class="schedule-time">12:00–16:00 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Tue · 22 Jul</div>
+      <div class="schedule-title">Pre-Bootcamp · Voice + Business Brain</div>
+      <div class="schedule-time">12:00–16:00 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Thu · 24 Jul</div>
+      <div class="schedule-title">Bootcamp 1 · Marketing + Sales Executives</div>
+      <div class="schedule-time">12:00–16:00 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Fri · 25 Jul</div>
+      <div class="schedule-title">Live Accelerator 1 · Hot seat Q&A</div>
+      <div class="schedule-time">11:00–12:30 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Thu · 31 Jul</div>
+      <div class="schedule-title">Bootcamp 2 · Operations + Finance Executives</div>
+      <div class="schedule-time">12:00–16:00 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Fri · 1 Aug</div>
+      <div class="schedule-title">Live Accelerator 2 · Hot seat Q&A</div>
+      <div class="schedule-time">11:00–12:30 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Thu · 7 Aug</div>
+      <div class="schedule-title">Bootcamp 3 · CEO Brain + Integration</div>
+      <div class="schedule-time">12:00–16:00 CEST</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-date">Fri · 8 Aug</div>
+      <div class="schedule-title">Final Deployment Certification</div>
+      <div class="schedule-time">11:00–12:30 CEST</div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 32px; color: var(--muted); font-style: italic;">
+    Plus 3 months of WhatsApp support · until your AI is RUNNING.
+  </p>
+</section>
+
+<!-- INSTALL -->
+<section class="section" style="background: #F4F1EB; max-width: 100%; padding: 96px 24px;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <span class="section-label fade-up">After You Register</span>
+    <h2 class="section-title fade-up">Install in one line · 60 seconds</h2>
+
+    <div class="install-box fade-up">
+      <p style="font-size: 14px; color: rgba(255,255,255,0.7); letter-spacing: 1px; text-transform: uppercase;">
+        Paste this in Terminal (Mac/Linux)
+      </p>
+      <div class="install-command" id="install-cmd">curl -fsSL https://raw.githubusercontent.com/danielpaulai/GBI-cohort-2026/main/install.sh | bash</div>
+      <button class="button copy" onclick="copyInstall()" id="copy-btn">📋 Copy Command</button>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 24px;">
+        Installs 3 cohort skills + 18 public skills + workspace folder · all set up in under 60 seconds.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <span class="section-label fade-up">Investment</span>
+  <h2 class="section-title fade-up">One payment · yours forever</h2>
+
+  <div class="pricing-card fade-up">
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;">10X With AI · Cohort July 2026</div>
+    <div class="price-amount">€1,997</div>
+    <div class="price-period">+ VAT · one payment</div>
+    <hr style="margin: 32px 0; border: none; border-top: 1px solid var(--border);">
+    <ul style="text-align: left; max-width: 400px; margin: 0 auto; list-style: none;">
+      <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✓ 21-day cohort (20 hrs live)</li>
+      <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✓ 5 AI Employees built with you</li>
+      <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✓ All skills · templates · code · forever</li>
+      <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✓ AI Daniel (24/7 coach clone)</li>
+      <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✓ 3 months WhatsApp support</li>
+      <li style="padding: 8px 0;">✓ Deployment Promise · we work until it runs</li>
+    </ul>
+    <a href="#" class="button" style="margin-top: 32px;">Reserve My Seat</a>
+    <p style="font-size: 11px; color: var(--muted); margin-top: 16px;">
+      Replaces a €4,000/mo VA · pays for itself in 15 days
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p style="font-size: 14px; opacity: 0.9; margin-bottom: 16px;">
+    <span class="brand">10X With AI</span> · Built by Daniel Paul · Purely Personal
+  </p>
+  <p style="font-size: 12px; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase;">
+    See you July 21 · 12pm CEST
+  </p>
+</footer>
+
+<script>
+  // Countdown to July 21, 2026 · 12:00 CEST
+  const target = new Date('2026-07-21T12:00:00+02:00').getTime();
+  const countdown = () => {
+    const now = Date.now();
+    const d = target - now;
+    if (d < 0) {
+      document.getElementById('countdown').innerHTML = '<p style="color: var(--accent); font-family: Fraunces; font-size: 32px; font-style: italic;">Cohort is LIVE.</p>';
+      return;
+    }
+    document.getElementById('days').textContent = String(Math.floor(d / 86400000)).padStart(2, '0');
+    document.getElementById('hours').textContent = String(Math.floor((d / 3600000) % 24)).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(Math.floor((d / 60000) % 60)).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(Math.floor((d / 1000) % 60)).padStart(2, '0');
+  };
+  countdown();
+  setInterval(countdown, 1000);
+
+  // Copy install command
+  function copyInstall() {
+    const text = document.getElementById('install-cmd').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✓ Copied! Now paste in Terminal';
+      btn.style.background = '#0a8c3a';
+      btn.style.color = 'white';
+      setTimeout(() => {
+        btn.textContent = '📋 Copy Command';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+    });
+  }
+
+  // Fade-in observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
