@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ikigai Worksheet · 10X With AI</title>
+<style>
+/* ═══════════════════════════════════════════════════
+   10X WITH AI · IKIGAI WORKSHEET
+   Printable A4 · 4 pages · brand-styled
+   Open in browser → Cmd/Ctrl + P → Print or save as PDF
+═══════════════════════════════════════════════════ */
+
+@page {
+  size: A4;
+  margin: 18mm 15mm;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: #0E0E10;
+  background: #FFFFFF;
+  line-height: 1.5;
+}
+
+.page {
+  width: 100%;
+  max-width: 180mm;
+  margin: 0 auto;
+  padding: 0;
+  page-break-after: always;
+  min-height: 260mm;
+}
+.page:last-child { page-break-after: auto; }
+
+/* HEADER */
+.brand-stripe {
+  height: 6px;
+  background: #E90D41;
+  margin-bottom: 12mm;
+}
+
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #E90D41;
+  padding-bottom: 6mm;
+  margin-bottom: 8mm;
+}
+
+.brand-name {
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #0E0E10;
+  text-transform: uppercase;
+}
+
+.brand-meta {
+  font-size: 9pt;
+  color: #7A7A7E;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 32pt;
+  font-weight: 900;
+  color: #0E0E10;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 4mm;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: 800;
+  color: #0E0E10;
+  letter-spacing: -0.5px;
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 13pt;
+  font-weight: 700;
+  color: #E90D41;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3mm;
+  margin-top: 6mm;
+}
+
+p { font-size: 10.5pt; margin-bottom: 3mm; color: #0E0E10; }
+.lead { font-size: 12pt; line-height: 1.55; color: #2A2A2E; }
+.muted { color: #7A7A7E; font-size: 9.5pt; }
+
+/* THE IKIGAI DIAGRAM */
+.ikigai-diagram {
+  display: flex;
+  justify-content: center;
+  margin: 8mm 0;
+}
+
+.ikigai-circles {
+  position: relative;
+  width: 130mm;
+  height: 130mm;
+}
+
+.circle {
+  position: absolute;
+  width: 80mm;
+  height: 80mm;
+  border-radius: 50%;
+  border: 2px solid #E90D41;
+  background: rgba(233, 13, 65, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #0E0E10;
+}
+
+.circle-love     { top: 0; left: 25mm; }
+.circle-good     { top: 25mm; left: 0; }
+.circle-paid     { top: 25mm; left: 50mm; }
+.circle-needs    { top: 50mm; left: 25mm; }
+
+.ikigai-center {
+  position: absolute;
+  top: 50mm;
+  left: 50mm;
+  width: 30mm;
+  height: 30mm;
+  border-radius: 50%;
+  background: #E90D41;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+/* WORKSHEET SECTIONS */
+.section-label {
+  display: inline-block;
+  background: #0E0E10;
+  color: #FFFFFF;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 2mm 4mm;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+}
+
+.question {
+  margin-bottom: 8mm;
+}
+
+.question-number {
+  font-size: 24pt;
+  font-weight: 900;
+  color: #E90D41;
+  line-height: 1;
+  margin-bottom: 2mm;
+}
+
+.question-text {
+  font-size: 11pt;
+  font-weight: 600;
+  color: #0E0E10;
+  margin-bottom: 3mm;
+  line-height: 1.4;
+}
+
+.answer-line {
+  border-bottom: 1px solid #D8D8D5;
+  height: 8mm;
+  margin-bottom: 1mm;
+}
+
+.answer-area {
+  height: 28mm;
+  border: 1px solid #D8D8D5;
+  background: #FAFAF8;
+  padding: 3mm;
+  font-size: 10pt;
+}
+
+/* IKIGAI CENTER (page 4) */
+.ikigai-result {
+  background: #0E0E10;
+  color: #FFFFFF;
+  padding: 10mm;
+  border-left: 6px solid #E90D41;
+  margin: 8mm 0;
+}
+
+.ikigai-result h3 {
+  color: #E90D41;
+  margin-bottom: 4mm;
+}
+
+.ikigai-result .answer-area {
+  background: #1A1A1C;
+  border: 1px solid #2A2A2E;
+  color: #FAFAF8;
+}
+
+/* FOOTER */
+.page-footer {
+  position: absolute;
+  bottom: 12mm;
+  left: 15mm;
+  right: 15mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  color: #7A7A7E;
+  border-top: 1px solid #D8D8D5;
+  padding-top: 3mm;
+}
+
+/* PRINT OPTIMIZATIONS */
+@media print {
+  body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .no-print { display: none; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+}
+
+/* SCREEN-ONLY CONTROLS */
+.no-print {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: #E90D41;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: -apple-system, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<button class="no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1 · COVER + INTRODUCTION
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <h1>YOUR IKIGAI<br>WORKSHEET</h1>
+
+  <p class="lead">
+    Before we build your AI Employees · we build YOU.
+  </p>
+
+  <p>
+    AI is a multiplier. Point it at the wrong work · it amplifies misery.
+    Point it at your <strong>Ikigai</strong> · it amplifies your soul's work.
+  </p>
+
+  <p>
+    Ikigai (生き甲斐) is the Japanese concept of "reason for being."
+    It lives where 4 circles overlap:
+  </p>
+
+  <div class="ikigai-diagram">
+    <div class="ikigai-circles">
+      <div class="circle circle-love">What you<br>LOVE</div>
+      <div class="circle circle-good">What you're<br>GOOD AT</div>
+      <div class="circle circle-paid">What you can<br>BE PAID FOR</div>
+      <div class="circle circle-needs">What the<br>WORLD NEEDS</div>
+      <div class="ikigai-center">IKIGAI</div>
+    </div>
+  </div>
+
+  <h3>How to use this worksheet</h3>
+
+  <p style="font-size: 10.5pt;">
+    <strong>1.</strong> Answer 4 questions per circle · be honest · no editing<br>
+    <strong>2.</strong> Look for OVERLAPS between your answers<br>
+    <strong>3.</strong> Bring your filled worksheet to Day 1 live session<br>
+    <strong>4.</strong> Your Ikigai becomes the WHY for every AI Employee
+  </p>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 1 of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2 · CIRCLE 1 (LOVE) + CIRCLE 2 (GOOD AT)
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <div class="section-label">CIRCLE 1</div>
+  <h2>WHAT YOU LOVE</h2>
+
+  <div class="question">
+    <div class="question-number">01</div>
+    <div class="question-text">What did you do as a kid for HOURS · without getting paid?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">02</div>
+    <div class="question-text">What activity makes TIME DISAPPEAR when you're doing it?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">03</div>
+    <div class="question-text">If money were no object · what would you do with your weeks?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">04</div>
+    <div class="question-text">3 topics you could talk about for 60 minutes · without prep:</div>
+    <div class="answer-line"></div>
+    <div class="answer-line"></div>
+    <div class="answer-line"></div>
+  </div>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 2 of 4 · Circle 1 of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3 · CIRCLE 2 (GOOD AT) + CIRCLE 3 (WORLD NEEDS)
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <div class="section-label">CIRCLE 2</div>
+  <h2>WHAT YOU'RE GOOD AT</h2>
+
+  <div class="question">
+    <div class="question-number">01</div>
+    <div class="question-text">What do people compliment you on · repeatedly?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">02</div>
+    <div class="question-text">What do colleagues / friends ask you for help with?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">03</div>
+    <div class="question-text">What's a skill you have that others find HARD?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">04</div>
+    <div class="question-text">What's your "unfair advantage"? · the thing that's just easier for you</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 3 of 4 · Circle 2 of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 4 · CIRCLE 3 (WORLD NEEDS)
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <div class="section-label">CIRCLE 3</div>
+  <h2>WHAT THE WORLD NEEDS</h2>
+
+  <div class="question">
+    <div class="question-number">01</div>
+    <div class="question-text">What's a problem in your industry that makes you ANGRY?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">02</div>
+    <div class="question-text">Who do you see suffering · with NO good solution available?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">03</div>
+    <div class="question-text">What's BROKEN in your market that hasn't been fixed?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">04</div>
+    <div class="question-text">Where do you see the BIGGEST opportunity in the next 3 years?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 4 of 4 · Circle 3 of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 5 · CIRCLE 4 (PAID FOR)
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <div class="section-label">CIRCLE 4</div>
+  <h2>WHAT YOU CAN BE PAID FOR</h2>
+
+  <div class="question">
+    <div class="question-number">01</div>
+    <div class="question-text">What are people already BUYING in your space?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">02</div>
+    <div class="question-text">What's your current business model? · how does money come in?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">03</div>
+    <div class="question-text">What adjacent products / services could you sell?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="question">
+    <div class="question-number">04</div>
+    <div class="question-text">What premium price point have you NOT tested yet?</div>
+    <div class="answer-area"></div>
+  </div>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 5 of 6 · Circle 4 of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 6 · YOUR IKIGAI · THE SYNTHESIS
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <h2>YOUR IKIGAI · SYNTHESIS</h2>
+
+  <p class="lead">
+    Look at your 4 circles. Where do answers OVERLAP across 2 · 3 · or 4 circles?
+    Those overlaps are where your Ikigai lives.
+  </p>
+
+  <h3>2-CIRCLE OVERLAPS (find these first)</h3>
+
+  <p class="muted">Patterns you noticed across CIRCLE 1 (LOVE) and CIRCLE 2 (GOOD AT):</p>
+  <div class="answer-area"></div>
+
+  <p class="muted" style="margin-top: 4mm;">Patterns across CIRCLE 2 (GOOD AT) and CIRCLE 4 (PAID FOR):</p>
+  <div class="answer-area"></div>
+
+  <p class="muted" style="margin-top: 4mm;">Patterns across CIRCLE 3 (WORLD NEEDS) and CIRCLE 4 (PAID FOR):</p>
+  <div class="answer-area"></div>
+
+  <div class="page-footer">
+    <span>10X With AI · Ikigai Worksheet</span>
+    <span>Page 6 of 6 · Synthesis</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 7 · IKIGAI SENTENCE + AI EMPLOYEE PICK
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="brand-stripe"></div>
+
+  <div class="brand-header">
+    <div class="brand-name">10X With AI · Cohort July 2026</div>
+    <div class="brand-meta">Worksheet · Day 1 of 21</div>
+  </div>
+
+  <h2>YOUR IKIGAI SENTENCE</h2>
+
+  <p class="lead">
+    Write ONE sentence that captures where all 4 circles overlap.
+  </p>
+
+  <p class="muted">Format:</p>
+  <p style="font-style: italic; font-size: 12pt; padding: 4mm; background: #FAF6F7; border-left: 4px solid #E90D41;">
+    "I [VERB] [FOR WHOM] · so they [OUTCOME] · in a way that [YOUR UNIQUE STYLE]."
+  </p>
+
+  <p class="muted">Daniel's example:</p>
+  <p style="font-style: italic; font-size: 11pt; color: #2A2A2E; padding: 3mm; background: #FAFAF8;">
+    "I build AI Employees for business owners · so they reclaim 20 hrs/week ·
+    in a way that doesn't require them to code."
+  </p>
+
+  <div class="ikigai-result">
+    <h3>MY IKIGAI SENTENCE</h3>
+    <div class="answer-area"></div>
+  </div>
+
+  <h2 style="margin-top: 12mm;">YOUR AI EMPLOYEE PICK</h2>
+
+  <p>Based on your Ikigai · which AI Employee should you build FIRST?</p>
+
+  <div style="margin: 4mm 0;">
+    <p>☐ &nbsp; <strong>AI MARKETING EXECUTIVE</strong> · content audit + 14-day plan</p>
+    <p>☐ &nbsp; <strong>AI SALES EXECUTIVE</strong> · lead gen + personalized outreach</p>
+    <p>☐ &nbsp; <strong>AI OPERATIONS EXECUTIVE</strong> · inbox + SOPs + calendar</p>
+    <p>☐ &nbsp; <strong>AI FINANCE EXECUTIVE</strong> · Stripe + cashflow + forecasts</p>
+    <p>☐ &nbsp; <strong>AI CEO BRAIN</strong> · Monday morning briefing</p>
+  </div>
+
+  <p class="muted">Why this Employee · tied to your Ikigai:</p>
+  <div class="answer-area"></div>
+
+  <div class="page-footer">
+    <span>10X With AI · Bring this filled · to Day 1 live session</span>
+    <span>July 21 · 12pm CEST</span>
+  </div>
+</div>
+
+</body>
+</html>

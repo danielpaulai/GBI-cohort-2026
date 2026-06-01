@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{user_name}}'s Ikigai · Discovered {{date}}</title>
+
+<!-- Tailwind CSS · via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Lucide Icons · via CDN -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Premium fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --color-text: #0E0E10;
+    --color-bg: #FAFAF8;
+    --color-accent: #E90D41;
+    --color-muted: #7A7A7E;
+    --color-card: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(180deg, #FAFAF8 0%, #FFFFFF 100%);
+    padding: 80px 24px 60px;
+    text-align: center;
+    border-bottom: 4px solid var(--color-accent);
+  }
+
+  .brand-mark {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--color-text);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin: 0 0 12px;
+  }
+
+  .hero-subtitle {
+    color: var(--color-muted);
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* The Ikigai Sentence · Hero Quote */
+  .ikigai-sentence-section {
+    padding: 80px 24px;
+    background: var(--color-text);
+    color: white;
+    text-align: center;
+  }
+
+  .ikigai-sentence-label {
+    color: var(--color-accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .ikigai-sentence {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(24px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .ikigai-sentence::before {
+    content: '"';
+    color: var(--color-accent);
+    margin-right: 4px;
+  }
+  .ikigai-sentence::after {
+    content: '"';
+    color: var(--color-accent);
+    margin-left: 4px;
+  }
+
+  /* The Ikigai Diagram */
+  .diagram-section {
+    padding: 80px 24px;
+    background: var(--color-bg);
+  }
+
+  .section-label {
+    display: block;
+    color: var(--color-accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto 48px;
+    max-width: 800px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .diagram-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 1 / 1;
+  }
+
+  .ikigai-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .circle-group {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .circle-group:hover {
+    transform: scale(1.02);
+  }
+  .circle-group:hover circle {
+    fill-opacity: 0.15;
+  }
+
+  .circle-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    fill: var(--color-text);
+  }
+
+  .ikigai-center {
+    fill: var(--color-accent);
+  }
+
+  .ikigai-center-text {
+    fill: white;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  /* Answer chips inside circles */
+  .answer-chip {
+    background: white;
+    border: 1px solid #D8D8D5;
+    padding: 6px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    color: var(--color-text);
+    margin: 2px;
+    display: inline-block;
+  }
+
+  /* Cards Section */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--color-card);
+    padding: 32px;
+    border-radius: 4px;
+    border-top: 4px solid var(--color-accent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-number {
+    color: var(--color-accent);
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+  }
+
+  .card-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .card-body {
+    color: #2A2A2E;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .card-list {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .card-list li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+  }
+  .card-list li::before {
+    content: '→';
+    color: var(--color-accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+
+  /* Pattern Overlap Cards */
+  .pattern-section {
+    padding: 80px 24px;
+    background: white;
+  }
+
+  .pattern-card {
+    background: var(--color-bg);
+    padding: 28px;
+    border-radius: 4px;
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .pattern-type {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--color-text);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* Monetization Section */
+  .monetization-section {
+    padding: 80px 24px;
+    background: var(--color-bg);
+  }
+
+  /* Next Steps */
+  .steps-section {
+    padding: 80px 24px;
+    background: white;
+  }
+
+  .step-card {
+    background: linear-gradient(135deg, #FAFAF8 0%, #FFFFFF 100%);
+    padding: 32px;
+    border-radius: 4px;
+    border: 1px solid #D8D8D5;
+  }
+
+  .step-when {
+    color: var(--color-accent);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* AI Employee Picks */
+  .employees-section {
+    padding: 80px 24px;
+    background: var(--color-text);
+    color: white;
+  }
+
+  .employees-section .section-title { color: white; }
+  .employees-section .section-label { color: var(--color-accent); }
+
+  .employee-card {
+    background: #1A1A1C;
+    padding: 32px;
+    border-radius: 4px;
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .employee-rank {
+    font-family: 'Fraunces', serif;
+    color: var(--color-accent);
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+
+  .employee-name {
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 0 12px;
+  }
+
+  .employee-why {
+    color: #C0C0C5;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .employee-outcome {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 13px;
+    padding-top: 16px;
+    border-top: 1px solid #2A2A2E;
+  }
+
+  /* Share Section */
+  .share-section {
+    padding: 80px 24px;
+    text-align: center;
+    background: var(--color-bg);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin: 0 8px;
+  }
+  .button:hover { background: #c00b35; }
+  .button.secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-text);
+  }
+  .button.secondary:hover {
+    background: var(--color-text);
+    color: white;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px 24px;
+    background: var(--color-text);
+    color: #C0C0C5;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .footer .brand {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Print Styles */
+  @media print {
+    body { background: white !important; }
+    .ikigai-sentence-section,
+    .employees-section,
+    .footer { background: white !important; color: black !important; }
+    .ikigai-sentence { color: black !important; }
+    .ikigai-sentence-label,
+    .section-label { color: var(--color-accent) !important; }
+    .button { display: none; }
+    .share-section { display: none; }
+    .card, .step-card, .pattern-card, .employee-card {
+      page-break-inside: avoid;
+      box-shadow: none !important;
+      border: 1px solid #D8D8D5 !important;
+    }
+    .hero { padding: 24px; }
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+  /* Container */
+  .container { max-width: 1200px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO · User's Name + Date
+═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="brand-mark fade-up">10X With AI · Cohort Edition</div>
+  <h1 class="hero-title fade-up delay-1">Your Ikigai</h1>
+  <p class="hero-subtitle fade-up delay-2">
+    Discovered by <strong>{{user_name}}</strong> · {{date}}
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     THE IKIGAI SENTENCE · the hero quote
+═══════════════════════════════════════════════════ -->
+<section class="ikigai-sentence-section">
+  <div class="container">
+    <p class="ikigai-sentence-label fade-up">Your Reason For Being</p>
+    <p class="ikigai-sentence fade-up delay-1">{{ikigai_sentence}}</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     THE 4-CIRCLE DIAGRAM · with their data filled in
+═══════════════════════════════════════════════════ -->
+<section class="diagram-section">
+  <div class="container">
+    <span class="section-label fade-up">The 4 Circles · Filled With Your Data</span>
+    <h2 class="section-title fade-up delay-1">Where your answers overlap</h2>
+
+    <div class="diagram-wrapper fade-up delay-2">
+      <svg class="ikigai-svg" viewBox="0 0 600 600">
+        <!-- Circle: LOVE (top) -->
+        <g class="circle-group">
+          <circle cx="300" cy="200" r="180" fill="#E90D41" fill-opacity="0.08" stroke="#E90D41" stroke-width="2"/>
+          <text x="300" y="80" class="circle-label" text-anchor="middle">WHAT I LOVE</text>
+        </g>
+
+        <!-- Circle: GOOD AT (left) -->
+        <g class="circle-group">
+          <circle cx="200" cy="320" r="180" fill="#E90D41" fill-opacity="0.08" stroke="#E90D41" stroke-width="2"/>
+          <text x="50" y="320" class="circle-label" text-anchor="middle">GOOD AT</text>
+        </g>
+
+        <!-- Circle: PAID FOR (right) -->
+        <g class="circle-group">
+          <circle cx="400" cy="320" r="180" fill="#E90D41" fill-opacity="0.08" stroke="#E90D41" stroke-width="2"/>
+          <text x="550" y="320" class="circle-label" text-anchor="middle">PAID FOR</text>
+        </g>
+
+        <!-- Circle: WORLD NEEDS (bottom) -->
+        <g class="circle-group">
+          <circle cx="300" cy="400" r="180" fill="#E90D41" fill-opacity="0.08" stroke="#E90D41" stroke-width="2"/>
+          <text x="300" y="560" class="circle-label" text-anchor="middle">WORLD NEEDS</text>
+        </g>
+
+        <!-- Center: IKIGAI -->
+        <circle cx="300" cy="300" r="60" class="ikigai-center"/>
+        <text x="300" y="305" class="ikigai-center-text" text-anchor="middle">IKIGAI</text>
+      </svg>
+    </div>
+
+    <!-- The 4 sets of answers · grouped -->
+    <div class="cards-grid fade-up delay-3" style="margin-top: 64px;">
+      <div class="card">
+        <div class="card-title">What I Love</div>
+        <ul class="card-list">
+          {{love_answers_list}}
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">What I'm Good At</div>
+        <ul class="card-list">
+          {{good_at_answers_list}}
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">What The World Needs</div>
+        <ul class="card-list">
+          {{world_needs_answers_list}}
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">What I Can Be Paid For</div>
+        <ul class="card-list">
+          {{paid_for_answers_list}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PATTERN OVERLAPS · 4 zones
+═══════════════════════════════════════════════════ -->
+<section class="pattern-section">
+  <div class="container">
+    <span class="section-label fade-up">The 4 Pattern Overlaps</span>
+    <h2 class="section-title fade-up delay-1">Where 2 circles meet · gold lives there</h2>
+
+    <div class="cards-grid">
+      <div class="pattern-card fade-up delay-1">
+        <span class="pattern-type">Passion</span>
+        <h3 class="card-heading">{{passion_title}}</h3>
+        <p class="card-body">{{passion_description}}</p>
+      </div>
+
+      <div class="pattern-card fade-up delay-2">
+        <span class="pattern-type">Mission</span>
+        <h3 class="card-heading">{{mission_title}}</h3>
+        <p class="card-body">{{mission_description}}</p>
+      </div>
+
+      <div class="pattern-card fade-up delay-3">
+        <span class="pattern-type">Vocation</span>
+        <h3 class="card-heading">{{vocation_title}}</h3>
+        <p class="card-body">{{vocation_description}}</p>
+      </div>
+
+      <div class="pattern-card fade-up delay-4">
+        <span class="pattern-type">Profession</span>
+        <h3 class="card-heading">{{profession_title}}</h3>
+        <p class="card-body">{{profession_description}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MONETIZATION PATHS · 3 ways to make money
+═══════════════════════════════════════════════════ -->
+<section class="monetization-section">
+  <div class="container">
+    <span class="section-label fade-up">3 Ways To Monetize Your Ikigai</span>
+    <h2 class="section-title fade-up delay-1">Pick one. Start this week.</h2>
+
+    <div class="cards-grid">
+      <div class="card fade-up delay-1">
+        <div class="card-number">01</div>
+        <div class="card-title">Highest Probability</div>
+        <h3 class="card-heading">{{path1_title}}</h3>
+        <p class="card-body">{{path1_framing}}</p>
+        <ul class="card-list">
+          <li>{{path1_action_1}}</li>
+          <li>{{path1_action_2}}</li>
+          <li>{{path1_action_3}}</li>
+        </ul>
+        <p style="margin-top: 16px; font-weight: 700; color: var(--color-accent);">
+          Revenue potential: {{path1_revenue}}
+        </p>
+      </div>
+
+      <div class="card fade-up delay-2">
+        <div class="card-number">02</div>
+        <div class="card-title">Highest Ceiling</div>
+        <h3 class="card-heading">{{path2_title}}</h3>
+        <p class="card-body">{{path2_framing}}</p>
+        <ul class="card-list">
+          <li>{{path2_action_1}}</li>
+          <li>{{path2_action_2}}</li>
+          <li>{{path2_action_3}}</li>
+        </ul>
+        <p style="margin-top: 16px; font-weight: 700; color: var(--color-accent);">
+          Revenue potential: {{path2_revenue}}
+        </p>
+      </div>
+
+      <div class="card fade-up delay-3">
+        <div class="card-number">03</div>
+        <div class="card-title">Most Aligned</div>
+        <h3 class="card-heading">{{path3_title}}</h3>
+        <p class="card-body">{{path3_framing}}</p>
+        <ul class="card-list">
+          <li>{{path3_action_1}}</li>
+          <li>{{path3_action_2}}</li>
+          <li>{{path3_action_3}}</li>
+        </ul>
+        <p style="margin-top: 16px; font-weight: 700; color: var(--color-accent);">
+          Why this matters: {{path3_why}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     NEXT STEPS · 3 actions · today/week/month
+═══════════════════════════════════════════════════ -->
+<section class="steps-section">
+  <div class="container">
+    <span class="section-label fade-up">Your Next 3 Steps</span>
+    <h2 class="section-title fade-up delay-1">Today · This Week · This Month</h2>
+
+    <div class="cards-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-when">Today · Next 4 Hours</div>
+        <h3 class="card-heading">{{step_today_title}}</h3>
+        <p class="card-body">{{step_today_description}}</p>
+      </div>
+
+      <div class="step-card fade-up delay-2">
+        <div class="step-when">This Week · Before Sunday</div>
+        <h3 class="card-heading">{{step_week_title}}</h3>
+        <p class="card-body">{{step_week_description}}</p>
+      </div>
+
+      <div class="step-card fade-up delay-3">
+        <div class="step-when">This Month · By {{month_deadline}}</div>
+        <h3 class="card-heading">{{step_month_title}}</h3>
+        <p class="card-body">{{step_month_description}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     AI EMPLOYEE PICKS · top 3 for this person
+═══════════════════════════════════════════════════ -->
+<section class="employees-section">
+  <div class="container">
+    <span class="section-label fade-up">For Your 10X With AI Cohort</span>
+    <h2 class="section-title fade-up delay-1">Build these 3 AI Employees first</h2>
+
+    <div class="cards-grid">
+      <div class="employee-card fade-up delay-1">
+        <div class="employee-rank">01</div>
+        <h3 class="employee-name">{{employee1_name}}</h3>
+        <p class="employee-why">{{employee1_why}}</p>
+        <p class="employee-outcome">→ {{employee1_outcome}}</p>
+      </div>
+
+      <div class="employee-card fade-up delay-2">
+        <div class="employee-rank">02</div>
+        <h3 class="employee-name">{{employee2_name}}</h3>
+        <p class="employee-why">{{employee2_why}}</p>
+        <p class="employee-outcome">→ {{employee2_outcome}}</p>
+      </div>
+
+      <div class="employee-card fade-up delay-3">
+        <div class="employee-rank">03</div>
+        <h3 class="employee-name">{{employee3_name}}</h3>
+        <p class="employee-why">{{employee3_why}}</p>
+        <p class="employee-outcome">→ {{employee3_outcome}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SHARE · print + download
+═══════════════════════════════════════════════════ -->
+<section class="share-section">
+  <div class="container">
+    <span class="section-label">Save This Discovery</span>
+    <h2 class="section-title">This is your map · keep it close</h2>
+
+    <p style="max-width: 600px; margin: 0 auto 32px; color: var(--color-muted);">
+      Save this page. Print it. Pin it where you'll see it daily.
+      On Day 1 of 10X With AI · we use this to pick which AI Employee you build FIRST.
+    </p>
+
+    <button class="button" onclick="window.print()">🖨️ Print or Save as PDF</button>
+    <a href="https://wa.me/?text=I%20just%20discovered%20my%20Ikigai%20at%2010X%20With%20AI%20%F0%9F%94%A5" class="button secondary">📱 Share on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="footer">
+  <p>
+    <span class="brand">10X With AI</span> · Cohort July 2026<br>
+    <small style="opacity: 0.7;">Built with Claude · Daniel Paul · Purely Personal</small>
+  </p>
+  <p style="margin-top: 16px; font-size: 11px; opacity: 0.5;">
+    See you July 21 · 12pm CEST
+  </p>
+</footer>
+
+<script>
+  // Initialize Lucide icons
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

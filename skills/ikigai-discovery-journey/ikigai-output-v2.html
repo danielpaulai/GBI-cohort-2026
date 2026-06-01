@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{user_name}}'s Ikigai · Discovered {{date}}</title>
+
+<!-- ═══════════════════════════════════════════════════
+     CDN DEPENDENCIES · everything CDN-loaded · no build step
+═══════════════════════════════════════════════════ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS · pick a style block
+═══════════════════════════════════════════════════ */
+
+/* STYLE BLOCK: SOFT IKIGAI (default · warm cream · editorial) */
+:root {
+  --bg: #FAFAF8;
+  --bg-secondary: #F4F1EB;
+  --bg-card: #FFFFFF;
+  --bg-dark: #0E0E10;
+  --text: #0E0E10;
+  --text-muted: #6B6B6E;
+  --text-inverse: #FFFFFF;
+  --accent: #E94B5C;
+  --accent-secondary: #5C7F8C;
+  --border: #D8D8D5;
+  --grid-line: #E5E5E0;
+}
+
+/* Uncomment for NEURAL NOIR style:
+:root {
+  --bg: #000000;
+  --bg-secondary: #0A0A0F;
+  --bg-card: #0A0A0F;
+  --bg-dark: #000000;
+  --text: #FFFFFF;
+  --text-muted: #A0A0B0;
+  --text-inverse: #FFFFFF;
+  --accent: #FF3366;
+  --accent-secondary: #00FFCC;
+  --border: #1A1A1C;
+  --grid-line: #1A1A1C;
+}
+*/
+
+/* Uncomment for ARCHITECTURAL BLUEPRINT style:
+:root {
+  --bg: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-card: #FFFFFF;
+  --bg-dark: #0A0A0A;
+  --text: #0A0A0A;
+  --text-muted: #6B7280;
+  --text-inverse: #FFFFFF;
+  --accent: #1E40AF;
+  --accent-secondary: #DC2626;
+  --border: #E5E7EB;
+  --grid-line: #E5E7EB;
+}
+*/
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+.font-serif { font-family: 'Fraunces', Georgia, serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 1 · AURORA BACKGROUND (Aceternity-style)
+═══════════════════════════════════════════════════ */
+.aurora-bg {
+  position: relative;
+  min-height: 80vh;
+  overflow: hidden;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(233, 75, 92, 0.4), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(233, 75, 92, 0.2), transparent 60%),
+    radial-gradient(ellipse 50% 70% at 20% 80%, rgba(92, 127, 140, 0.15), transparent 60%);
+  animation: aurora 20s ease infinite;
+  pointer-events: none;
+}
+.aurora-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+@keyframes aurora {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-3%, 3%) rotate(120deg); }
+  66% { transform: translate(3%, -3%) rotate(240deg); }
+}
+
+.brand-mark {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--text-inverse);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  color: var(--text-inverse);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-subtitle {
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+  margin-top: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 2 · TEXT GENERATE EFFECT (Aceternity-style)
+═══════════════════════════════════════════════════ */
+.text-generate {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(24px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.text-generate-word {
+  opacity: 0;
+  display: inline-block;
+  filter: blur(8px);
+  animation: textReveal 0.7s ease forwards;
+}
+@keyframes textReveal {
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* ═══════════════════════════════════════════════════
+   SECTION SCAFFOLD
+═══════════════════════════════════════════════════ */
+.section {
+  padding: 96px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-dark {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  max-width: 100%;
+  margin: 0;
+}
+
+.section-label {
+  display: block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  text-align: center;
+  margin: 0 auto 64px;
+  max-width: 900px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 3 · NUMBER TICKER (Magic UI-style)
+═══════════════════════════════════════════════════ */
+.number-ticker {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  color: var(--accent);
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 4 · BENTO GRID (21st.dev-style)
+═══════════════════════════════════════════════════ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.bento-item {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.bento-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.bento-item.featured {
+  grid-column: span 6;
+  min-height: 320px;
+}
+.bento-item.standard {
+  grid-column: span 3;
+  min-height: 280px;
+}
+.bento-item.wide {
+  grid-column: span 8;
+}
+.bento-item.narrow {
+  grid-column: span 4;
+}
+@media (max-width: 768px) {
+  .bento-item.featured, .bento-item.standard, .bento-item.wide, .bento-item.narrow {
+    grid-column: span 12;
+  }
+}
+
+.bento-number {
+  color: var(--accent);
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+
+.bento-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.bento-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.bento-body {
+  color: var(--text);
+  opacity: 0.85;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 5 · ANIMATED IKIGAI DIAGRAM
+═══════════════════════════════════════════════════ */
+.diagram-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+.ikigai-svg { width: 100%; height: 100%; overflow: visible; }
+.ikigai-circle {
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.ikigai-circle:hover { fill-opacity: 0.22; transform: scale(1.02); }
+.ikigai-circle-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  fill: var(--text);
+}
+.ikigai-center-circle {
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 6 · SPOTLIGHT EFFECT (Aceternity-style)
+═══════════════════════════════════════════════════ */
+.spotlight-area {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(233, 75, 92, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  transition: transform 0.3s ease-out;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.spotlight-content { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 7 · MARQUEE / SCROLLING TICKER (Magic UI)
+═══════════════════════════════════════════════════ */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 1.5rem;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 32px 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.marquee-content {
+  display: flex;
+  gap: 1.5rem;
+  animation: scroll 40s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.marquee-item {
+  background: var(--bg-card);
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text);
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPONENT 8 · BORDER BEAM (Magic UI-style)
+═══════════════════════════════════════════════════ */
+.border-beam {
+  position: relative;
+  border-radius: 12px;
+  background: var(--bg-card);
+  overflow: hidden;
+  padding: 36px;
+  border: 1px solid var(--border);
+}
+.border-beam.dark {
+  background: #1A1A1C;
+  border-color: #2A2A2C;
+}
+.border-beam::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: 14px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 320deg,
+    var(--accent) 350deg,
+    var(--accent) 360deg
+  );
+  animation: rotateBeam 4s linear infinite;
+  z-index: 0;
+}
+.border-beam::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  z-index: 1;
+}
+.border-beam.dark::after { background: #1A1A1C; }
+.border-beam > * { position: relative; z-index: 2; }
+@keyframes rotateBeam {
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════
+   FADE-IN ANIMATIONS · scroll-triggered
+═══════════════════════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 100px;
+  margin: 6px;
+}
+.button:hover { background: #d0394a; transform: translateY(-2px); }
+.button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--text);
+}
+.button.secondary:hover { background: var(--text); color: var(--text-inverse); }
+.button.whatsapp { background: #25D366; }
+.button.whatsapp:hover { background: #1ea952; }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+.footer {
+  padding: 48px 24px;
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  text-align: center;
+  opacity: 0.95;
+}
+.footer .brand {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════
+   PRINT STYLES
+═══════════════════════════════════════════════════ */
+@media print {
+  body { background: white !important; color: black !important; }
+  .aurora-bg, .footer, .section-dark {
+    background: white !important;
+    color: black !important;
+  }
+  .aurora-bg::before, .aurora-bg::after,
+  .spotlight, .border-beam::before, .marquee { display: none !important; }
+  .button, .marquee, .share-section { display: none !important; }
+  .border-beam, .border-beam.dark { background: white !important; border: 1px solid #ccc !important; }
+  .border-beam::after { display: none; }
+  .border-beam > * { color: black !important; }
+  .hero-title { color: black !important; }
+  .section-label { color: var(--accent) !important; }
+  .bento-item, .border-beam {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #D8D8D5 !important;
+  }
+}
+@page { size: A4; margin: 15mm; }
+
+/* ═══════════════════════════════════════════════════
+   STYLE SWITCHER (top-right control)
+═══════════════════════════════════════════════════ */
+.style-switcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px;
+  display: flex;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.style-btn {
+  padding: 8px 14px;
+  border: 0;
+  background: transparent;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+.style-btn.active {
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+.style-btn:hover:not(.active) { color: var(--text); }
+@media print { .style-switcher { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     STYLE SWITCHER · live aesthetic toggle
+═══════════════════════════════════════════════════ -->
+<div class="style-switcher">
+  <button class="style-btn active" onclick="setStyle('soft')">Soft</button>
+  <button class="style-btn" onclick="setStyle('noir')">Noir</button>
+  <button class="style-btn" onclick="setStyle('blueprint')">Blueprint</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO · Aurora Background · User Name
+═══════════════════════════════════════════════════ -->
+<section class="aurora-bg">
+  <div style="text-align: center; padding: 24px;">
+    <div class="brand-mark">10X With AI · Cohort Edition</div>
+    <h1 class="hero-title">
+      Your <span class="hero-italic">Ikigai</span>
+    </h1>
+    <p class="hero-subtitle">
+      Discovered by <strong>{{user_name}}</strong> · {{date}}
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     THE IKIGAI SENTENCE · Text Generate Effect
+═══════════════════════════════════════════════════ -->
+<section class="section section-dark spotlight-area" id="sentence-section">
+  <div class="spotlight" id="sentence-spotlight"></div>
+  <div class="spotlight-content">
+    <span class="section-label">Your Reason For Being</span>
+    <div class="text-generate" id="ikigai-sentence-text">
+      {{ikigai_sentence}}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MARQUEE · their signature phrases
+═══════════════════════════════════════════════════ -->
+<div class="marquee">
+  <div class="marquee-content">
+    <span class="marquee-item">{{love_answer_1}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{good_at_answer_1}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{world_needs_answer_1}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{paid_for_answer_1}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{love_answer_2}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{good_at_answer_2}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{love_answer_3}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{paid_for_answer_2}}</span>
+    <span class="marquee-item">→</span>
+    <span class="marquee-item">{{world_needs_answer_2}}</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     THE 4-CIRCLE DIAGRAM
+═══════════════════════════════════════════════════ -->
+<section class="section">
+  <span class="section-label fade-up">The 4 Circles</span>
+  <h2 class="section-title fade-up delay-1">Where your answers overlap</h2>
+
+  <div class="diagram-wrapper fade-up delay-2">
+    <svg class="ikigai-svg" viewBox="0 0 600 600">
+      <circle cx="300" cy="200" r="170" class="ikigai-circle" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="2"/>
+      <text x="300" y="50" class="ikigai-circle-label" text-anchor="middle">LOVE</text>
+
+      <circle cx="200" cy="320" r="170" class="ikigai-circle" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="2"/>
+      <text x="50" y="320" class="ikigai-circle-label" text-anchor="middle">GOOD AT</text>
+
+      <circle cx="400" cy="320" r="170" class="ikigai-circle" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="2"/>
+      <text x="550" y="320" class="ikigai-circle-label" text-anchor="middle">PAID FOR</text>
+
+      <circle cx="300" cy="400" r="170" class="ikigai-circle" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="2"/>
+      <text x="300" y="585" class="ikigai-circle-label" text-anchor="middle">WORLD NEEDS</text>
+
+      <circle cx="300" cy="300" r="55" class="ikigai-center-circle" fill="var(--accent)"/>
+      <text x="300" y="307" fill="white" font-family="Fraunces" font-style="italic" font-weight="700" font-size="20" letter-spacing="2" text-anchor="middle">IKIGAI</text>
+    </svg>
+  </div>
+
+  <div class="bento-grid fade-up delay-3" style="margin-top: 64px;">
+    <div class="bento-item standard">
+      <div class="bento-label">What I Love</div>
+      <ul style="list-style: none; padding: 0; margin-top: 12px;">
+        <li style="padding: 6px 0; font-size: 14px;">→ {{love_answer_1}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{love_answer_2}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{love_answer_3}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{love_answer_4}}</li>
+      </ul>
+    </div>
+    <div class="bento-item standard">
+      <div class="bento-label">What I'm Good At</div>
+      <ul style="list-style: none; padding: 0; margin-top: 12px;">
+        <li style="padding: 6px 0; font-size: 14px;">→ {{good_at_answer_1}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{good_at_answer_2}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{good_at_answer_3}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{good_at_answer_4}}</li>
+      </ul>
+    </div>
+    <div class="bento-item standard">
+      <div class="bento-label">What World Needs</div>
+      <ul style="list-style: none; padding: 0; margin-top: 12px;">
+        <li style="padding: 6px 0; font-size: 14px;">→ {{world_needs_answer_1}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{world_needs_answer_2}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{world_needs_answer_3}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{world_needs_answer_4}}</li>
+      </ul>
+    </div>
+    <div class="bento-item standard">
+      <div class="bento-label">What I'm Paid For</div>
+      <ul style="list-style: none; padding: 0; margin-top: 12px;">
+        <li style="padding: 6px 0; font-size: 14px;">→ {{paid_for_answer_1}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{paid_for_answer_2}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{paid_for_answer_3}}</li>
+        <li style="padding: 6px 0; font-size: 14px;">→ {{paid_for_answer_4}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PATTERN OVERLAPS · 4 zones · bento layout
+═══════════════════════════════════════════════════ -->
+<section class="section" style="background: var(--bg-secondary);">
+  <span class="section-label fade-up">The 4 Pattern Overlaps</span>
+  <h2 class="section-title fade-up delay-1">Where 2 circles meet · gold lives there</h2>
+
+  <div class="bento-grid">
+    <div class="bento-item featured fade-up delay-1">
+      <div class="bento-label">Passion · LOVE + GOOD AT</div>
+      <h3 class="bento-heading">{{passion_title}}</h3>
+      <p class="bento-body">{{passion_description}}</p>
+    </div>
+
+    <div class="bento-item featured fade-up delay-2">
+      <div class="bento-label">Mission · LOVE + WORLD NEEDS</div>
+      <h3 class="bento-heading">{{mission_title}}</h3>
+      <p class="bento-body">{{mission_description}}</p>
+    </div>
+
+    <div class="bento-item featured fade-up delay-3">
+      <div class="bento-label">Vocation · WORLD NEEDS + PAID FOR</div>
+      <h3 class="bento-heading">{{vocation_title}}</h3>
+      <p class="bento-body">{{vocation_description}}</p>
+    </div>
+
+    <div class="bento-item featured fade-up delay-4">
+      <div class="bento-label">Profession · GOOD AT + PAID FOR</div>
+      <h3 class="bento-heading">{{profession_title}}</h3>
+      <p class="bento-body">{{profession_description}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MONETIZATION PATHS · 3 ways · bento grid · number tickers
+═══════════════════════════════════════════════════ -->
+<section class="section">
+  <span class="section-label fade-up">3 Ways To Monetize Your Ikigai</span>
+  <h2 class="section-title fade-up delay-1">Pick one. Start this week.</h2>
+
+  <div class="bento-grid">
+    <div class="bento-item featured fade-up delay-1">
+      <div class="bento-number">01</div>
+      <div class="bento-label">Highest Probability</div>
+      <h3 class="bento-heading">{{path1_title}}</h3>
+      <p class="bento-body" style="margin-bottom: 16px;">{{path1_framing}}</p>
+      <ul style="list-style: none; padding: 0; margin: 12px 0;">
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path1_action_1}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path1_action_2}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path1_action_3}}</li>
+      </ul>
+      <p style="margin-top: 16px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);">Revenue Potential</p>
+      <p style="font-size: 24px; font-weight: 800; color: var(--accent); margin-top: 4px;" class="font-mono">{{path1_revenue}}</p>
+    </div>
+
+    <div class="bento-item featured fade-up delay-2">
+      <div class="bento-number">02</div>
+      <div class="bento-label">Highest Ceiling</div>
+      <h3 class="bento-heading">{{path2_title}}</h3>
+      <p class="bento-body" style="margin-bottom: 16px;">{{path2_framing}}</p>
+      <ul style="list-style: none; padding: 0; margin: 12px 0;">
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path2_action_1}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path2_action_2}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path2_action_3}}</li>
+      </ul>
+      <p style="margin-top: 16px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted);">Revenue Potential</p>
+      <p style="font-size: 24px; font-weight: 800; color: var(--accent); margin-top: 4px;" class="font-mono">{{path2_revenue}}</p>
+    </div>
+
+    <div class="bento-item featured fade-up delay-3" style="grid-column: span 12; max-width: 600px; margin: 0 auto;">
+      <div class="bento-number">03</div>
+      <div class="bento-label">Most Aligned</div>
+      <h3 class="bento-heading">{{path3_title}}</h3>
+      <p class="bento-body" style="margin-bottom: 16px;">{{path3_framing}}</p>
+      <ul style="list-style: none; padding: 0; margin: 12px 0;">
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path3_action_1}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path3_action_2}}</li>
+        <li style="padding: 4px 0; font-size: 14px;">→ {{path3_action_3}}</li>
+      </ul>
+      <p style="margin-top: 16px; font-size: 14px; font-style: italic; color: var(--text-muted);">{{path3_why}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     NEXT STEPS · 3 cards
+═══════════════════════════════════════════════════ -->
+<section class="section" style="background: var(--bg-secondary);">
+  <span class="section-label fade-up">Your Next 3 Steps</span>
+  <h2 class="section-title fade-up delay-1">Today · This Week · This Month</h2>
+
+  <div class="bento-grid">
+    <div class="bento-item standard fade-up delay-1" style="grid-column: span 4;">
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">
+        ⚡ Today · Next 4 Hours
+      </div>
+      <h3 class="bento-heading">{{step_today_title}}</h3>
+      <p class="bento-body">{{step_today_description}}</p>
+    </div>
+    <div class="bento-item standard fade-up delay-2" style="grid-column: span 4;">
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">
+        📅 This Week · Before Sunday
+      </div>
+      <h3 class="bento-heading">{{step_week_title}}</h3>
+      <p class="bento-body">{{step_week_description}}</p>
+    </div>
+    <div class="bento-item standard fade-up delay-3" style="grid-column: span 4;">
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">
+        🚀 This Month · By {{month_deadline}}
+      </div>
+      <h3 class="bento-heading">{{step_month_title}}</h3>
+      <p class="bento-body">{{step_month_description}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     AI EMPLOYEE PICKS · 3 ranked · border beam
+═══════════════════════════════════════════════════ -->
+<section class="section section-dark" style="padding: 96px 24px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <span class="section-label fade-up">For Your 10X With AI Cohort</span>
+    <h2 class="section-title fade-up delay-1" style="color: white;">Build these 3 AI Employees first</h2>
+
+    <div class="bento-grid">
+      <div class="border-beam dark fade-up delay-1" style="grid-column: span 4;">
+        <div style="font-family: 'Fraunces', serif; color: var(--accent); font-weight: 900; font-size: 72px; line-height: 1; letter-spacing: -2px; margin-bottom: 16px;">01</div>
+        <h3 style="color: white; font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; margin-bottom: 12px;">{{employee1_name}}</h3>
+        <p style="color: #C0C0C5; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">{{employee1_why}}</p>
+        <div style="padding-top: 16px; border-top: 1px solid #2A2A2E; color: var(--accent); font-weight: 600; font-size: 13px;">→ {{employee1_outcome}}</div>
+      </div>
+
+      <div class="border-beam dark fade-up delay-2" style="grid-column: span 4;">
+        <div style="font-family: 'Fraunces', serif; color: var(--accent); font-weight: 900; font-size: 72px; line-height: 1; letter-spacing: -2px; margin-bottom: 16px;">02</div>
+        <h3 style="color: white; font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; margin-bottom: 12px;">{{employee2_name}}</h3>
+        <p style="color: #C0C0C5; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">{{employee2_why}}</p>
+        <div style="padding-top: 16px; border-top: 1px solid #2A2A2E; color: var(--accent); font-weight: 600; font-size: 13px;">→ {{employee2_outcome}}</div>
+      </div>
+
+      <div class="border-beam dark fade-up delay-3" style="grid-column: span 4;">
+        <div style="font-family: 'Fraunces', serif; color: var(--accent); font-weight: 900; font-size: 72px; line-height: 1; letter-spacing: -2px; margin-bottom: 16px;">03</div>
+        <h3 style="color: white; font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; margin-bottom: 12px;">{{employee3_name}}</h3>
+        <p style="color: #C0C0C5; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">{{employee3_why}}</p>
+        <div style="padding-top: 16px; border-top: 1px solid #2A2A2E; color: var(--accent); font-weight: 600; font-size: 13px;">→ {{employee3_outcome}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SHARE · print + WhatsApp
+═══════════════════════════════════════════════════ -->
+<section class="section share-section" style="text-align: center;">
+  <span class="section-label">Save This Discovery</span>
+  <h2 class="section-title">This is your map · keep it close</h2>
+
+  <p style="max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 16px;">
+    Save this page · print it · pin it where you'll see it daily.<br>
+    On Day 1 of 10X With AI · we use this to pick which AI Employee you build FIRST.
+  </p>
+
+  <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <button class="button" onclick="window.print()">🖨 Print or Save as PDF</button>
+    <a href="javascript:shareWhatsApp()" class="button whatsapp">📱 Share on WhatsApp</a>
+    <a href="https://10xwithai.com/cohort" class="button secondary">Learn About The Cohort</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="footer">
+  <p>
+    <span class="brand">10X With AI</span> · Cohort July 2026<br>
+    <small style="opacity: 0.7;">Built by Daniel Paul · Purely Personal</small>
+  </p>
+  <p style="margin-top: 16px; font-size: 11px; opacity: 0.5; letter-spacing: 2px; text-transform: uppercase;">
+    See you July 21 · 12pm CEST
+  </p>
+</footer>
+
+<script>
+  // ═══════════════════════════════════════════════════
+  //  STYLE SWITCHER · live aesthetic toggle
+  // ═══════════════════════════════════════════════════
+  const styles = {
+    soft: {
+      '--bg': '#FAFAF8', '--bg-secondary': '#F4F1EB', '--bg-card': '#FFFFFF',
+      '--bg-dark': '#0E0E10', '--text': '#0E0E10', '--text-muted': '#6B6B6E',
+      '--accent': '#E94B5C', '--border': '#D8D8D5'
+    },
+    noir: {
+      '--bg': '#000000', '--bg-secondary': '#0A0A0F', '--bg-card': '#0A0A0F',
+      '--bg-dark': '#000000', '--text': '#FFFFFF', '--text-muted': '#A0A0B0',
+      '--accent': '#FF3366', '--border': '#1A1A1C'
+    },
+    blueprint: {
+      '--bg': '#FFFFFF', '--bg-secondary': '#F8F9FA', '--bg-card': '#FFFFFF',
+      '--bg-dark': '#0A0A0A', '--text': '#0A0A0A', '--text-muted': '#6B7280',
+      '--accent': '#1E40AF', '--border': '#E5E7EB'
+    }
+  };
+  function setStyle(name) {
+    const vars = styles[name];
+    Object.entries(vars).forEach(([k, v]) => {
+      document.documentElement.style.setProperty(k, v);
+    });
+    document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // ═══════════════════════════════════════════════════
+  //  TEXT GENERATE EFFECT · Ikigai sentence
+  // ═══════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', () => {
+    const sentenceEl = document.getElementById('ikigai-sentence-text');
+    if (sentenceEl) {
+      const words = sentenceEl.textContent.trim().split(/\s+/);
+      sentenceEl.innerHTML = words.map((word, i) =>
+        `<span class="text-generate-word" style="animation-delay: ${0.2 + (i * 0.06)}s">${word}&nbsp;</span>`
+      ).join('');
+    }
+  });
+
+  // ═══════════════════════════════════════════════════
+  //  SPOTLIGHT FOLLOWER · mouse-tracking light
+  // ═══════════════════════════════════════════════════
+  const sentenceSection = document.getElementById('sentence-section');
+  const spotlight = document.getElementById('sentence-spotlight');
+  if (sentenceSection && spotlight) {
+    sentenceSection.addEventListener('mousemove', (e) => {
+      const rect = sentenceSection.getBoundingClientRect();
+      spotlight.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px) translate(-50%, -50%)`;
+    });
+  }
+
+  // ═══════════════════════════════════════════════════
+  //  SCROLL-TRIGGERED FADE-IN · IntersectionObserver
+  // ═══════════════════════════════════════════════════
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ═══════════════════════════════════════════════════
+  //  WHATSAPP SHARE
+  // ═══════════════════════════════════════════════════
+  function shareWhatsApp() {
+    const sentence = document.getElementById('ikigai-sentence-text').textContent.trim();
+    const text = encodeURIComponent(
+      `I just discovered my Ikigai 🔥\n\n"${sentence}"\n\n— via 10X With AI Cohort\nhttps://10xwithai.com`
+    );
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+  }
+  window.shareWhatsApp = shareWhatsApp;
+
+  // ═══════════════════════════════════════════════════
+  //  INIT LUCIDE ICONS
+  // ═══════════════════════════════════════════════════
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+
+</body>
+</html>
