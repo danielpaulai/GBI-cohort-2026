@@ -138,7 +138,21 @@ log_step "STEP 3 · Creating your 10X workspace"
 
 mkdir -p "$WORKSPACE_DIR"/{marketing,sales,operations,finance,ceo-brain,templates,my-work,state}
 
+# Write cohort_id file (used by Purely Personal MCP for tracking)
+# If COHORT_ID env var set · use it. Otherwise · generate from timestamp.
+COHORT_ID="${COHORT_ID:-AMSTERDAM-COHORT-2026-$(date +%s | tail -c 4)}"
+cat > "$WORKSPACE_DIR/.cohort" << COHORT_EOF
+{
+  "cohort_id": "${COHORT_ID}",
+  "cohort_name": "10X With AI · GBI Amsterdam · July 2026",
+  "enrolled_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "skills_version": "${VERSION}",
+  "tracking_endpoint": "https://purely-personal-mcp.app/cohort/log"
+}
+COHORT_EOF
+
 log_success "Workspace ready at ${WORKSPACE_DIR}"
+log_success "Cohort ID assigned: ${COHORT_ID}"
 
 # ─── STEP 4 · DOWNLOAD TEMPLATES ────────────────────────────────────
 log_step "STEP 4 · Downloading cohort templates"
